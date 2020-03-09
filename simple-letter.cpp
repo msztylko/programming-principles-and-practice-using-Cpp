@@ -37,7 +37,8 @@ int main()
 	}
 	string age_message = " ";
 	if (age < 12) {
-		age_message = "Next year you will be" + (age+1) + '\n';
+		age += 1;
+		age_message = "Next year you will be";
 	}
 	if (age == 17) {
 		age_message = "Next year you will be able to vote.";
@@ -54,7 +55,7 @@ int main()
 		<<call<<'\n'
 		<<body<<'\n'
 		<<"I hear you just had a birthday and you are "<<age<<" years young.\n"
-		<<age_message<<'\n'
+		<<age_message<<age<<'\n'
 		<<"Yours sincerly,\n\n"
 		<<name<<'\n';
 }
