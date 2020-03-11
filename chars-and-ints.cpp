@@ -4,10 +4,8 @@
 
 int main()
 {
-	char character = 'a';
-	while (character != 'z') {
+	for (char character = 'a'; character != 'z'; character = char(character+1)) {
 		cout<<character<<'\t'<<int(character)<<endl;
-		character = char(character+1);
 	}
-	cout<<character<<'\t'<<int(character)<<endl;
 }
+
