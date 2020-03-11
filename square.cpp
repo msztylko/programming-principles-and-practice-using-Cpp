@@ -4,9 +4,6 @@
 
 int main()
 {
-	int i = 0;	//start from 0
-	while (i < 100) {
+	for (int i=0; i<100; ++i)
 		cout<<i<<'\t'<<sqrt(i)<<'\n';
-		++i;	//increment i
-	}
 }
