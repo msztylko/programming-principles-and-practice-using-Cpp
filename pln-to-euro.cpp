@@ -6,14 +6,18 @@ int main()
 {
 	const double pln_per_euro = 4.32;	//number of polish zloty in one euro
 	double amount = 1;			//amount of the given currency
-	string currency = " ";
-	cout<<"Please enter amount of money followed by a currnecy (pln or euro):\n";
+	char currency = ' ';
+	cout<<"Please enter amount of money followed by a currnecy (p or e):\n";
 	cin>>amount>>currency;
-	
-	if (currency == "pln")
+ 	switch (currency) {	
+	case 'p':
 		cout<<amount<<" pln == "<<amount/pln_per_euro<<" euro\n";
-	else if (currency == "euro")
+		break;
+	case 'e':
 		cout<<amount<<" euro == "<<amount*pln_per_euro<<" pln\n";
-	else
+		break;
+	default:
 		cout<<"Sorry, I don't know currency called "<<currency<<'\n';
+		break;
+	}
 }
