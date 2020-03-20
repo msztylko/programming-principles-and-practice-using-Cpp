@@ -44,11 +44,9 @@ double term()
 			t = get_token();
 			break;
 		case '/':
-			left /= primary();
-			t = get_token();
-			break;
-		case '%':
-			left %= primary();
+		{	double d = primary();	
+			if (d==0) error("divide by zero");
+			left /= d;
 			t = get_token();
 			break;
 		default:
@@ -59,19 +57,40 @@ double term()
 
 
 		
-double primary()	//deal with numbers and parantheses
-			//calls espression() and get_token()
+double primary()
+{
+	Token t = get_token();
+	switch (t.kind) {
+	case '(':
+		{	double d = expression();
+			t = get_token();
+			if (t.kind != ')') error("')'expected");
+			return d;
+		}
+	case '8':
+		return t.value
+	default:
+		error("primary expected");
+	}
+}
 
-//does it work?
-Token get_token();
+			
 
 vector<Token> tok;
 
 int main()
-{
-	while(cin) {
-		Token t = get_token();
-		tok.push_back(t);
-	}
-	//...
+try {
+	while (cin)
+		cout<<expression()<<'\n';
+	keep_window_open();
+}
+catch (exception& e) {
+	cerr<<e.what()<<endl;
+	keep_window_open();
+	return 1;
+}
+catch (...) {
+	cerr<<"exception\n";
+	keep_window_open();
+	return 2;
 }
